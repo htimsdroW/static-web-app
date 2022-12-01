@@ -1,13 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getHistory } from '../../../../../lib/reversify-api'
-
-type Entry = {
-  inputString: string,
-  outputString: string,
-  timestamp: Date
-}
-
-type History = Entry[]
+import type { History } from "../../../../../types/history";
 
 export default async function handler(
   req: NextApiRequest,

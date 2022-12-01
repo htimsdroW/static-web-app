@@ -1,4 +1,4 @@
-
+import type { History } from '../types/history'
 const host = process.env.REVERSIFY_FUNCTION_HOST
 const key = process.env.REVERSIFY_FUNCTION_KEY
 
@@ -21,11 +21,12 @@ export const reversify = async (inputString: string) => {
   return await response.text()
 }
 
-export const getHistory = async (key: string, take: string) => {
+export const getHistory = async (key: string, take: string): Promise<History> => {
   const options = {
     method: 'GET',
     headers
   }
+
   const response = await fetch(`${host}api/history/${key}/${take}`, options)
 
   if (!response.ok) throw Error('History failed.')
