@@ -1,12 +1,16 @@
 import useSwr from 'swr'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { History } from '../types/history'
 
 const fetcher = (path: string): Promise<History> => fetch(path).then(res => res.json())
 
 function HistoryList({output}: Props) {
   const key = new Date().getUTCFullYear()
-  const { data, error } = useSwr(`/api/history/${key}/5`, fetcher)
+  const { data, error, mutate, isValidating } = useSwr(`/api/history/${key}/5`, fetcher)
+
+  useEffect(() => {
+    mutate()
+  }, [mutate, output])
 
   if (error) return <div>Failed to load history.</div>
   if (!data) return <div>Loading...</div>
@@ -28,7 +32,7 @@ function HistoryList({output}: Props) {
 
   return (
     <div>
-      <h4>History</h4>
+      <h4>History {isValidating && "...updating"}</h4>
       {history}
     </div>
   )
