@@ -19,5 +19,5 @@ export default async function handler(
 
   const result = await getHistory(String(key), String(take))
 
-  return result
+  res.status(200).send(result)
 }
