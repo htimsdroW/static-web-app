@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    REVERSIFY_FUNCTION_HOST: "REVERSIFY_FUNCTION_HOST"
+    REVERSIFY_FUNCTION_HOST: "https://func-htimsdrow.azurewebsites.net/"
   }
 }
 
