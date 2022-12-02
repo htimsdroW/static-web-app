@@ -1,7 +1,7 @@
 export type Entry = {
   inputString: string,
   outputString: string,
-  timestamp: Date
+  createdAt: string
 }
 
 export type History = Entry[]

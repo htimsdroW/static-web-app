@@ -16,14 +16,15 @@ function HistoryList({output}: Props) {
   if (!data) return <div>Loading...</div>
 
   const history = data.map((entity, index) => {
-    const timestamp = String(new Date(+entity.timestamp))
+    const date = new Date(Number(entity.createdAt))
+    const submittedAt = `${date.toUTCString()}`
     return (
       <div key={index}>
         <table>
           <tbody>
             <tr><td>input:</td><td>{entity.inputString}</td></tr>
             <tr><td>output:</td><td>{entity.outputString}</td></tr>
-            <tr><td>submitted at:</td><td>{timestamp}</td></tr>
+            <tr><td>submitted at:</td><td>{submittedAt}</td></tr>
           </tbody>
         </table>
       </div>
