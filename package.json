@@ -1,6 +1,15 @@
 {
   "name": "htimsdrow-fe",
   "version": "0.1.0",
+  "description": "Next.js frontend of the Wordsmith web app.",
+  "contributors": [
+    {
+      "name": "Caroline W. Borg",
+      "email": "cawibo+wordsmith@gmail.com",
+      "url": "https://github.com/cawibo/"
+    }
+  ],
+  "license": "ISC",
   "private": true,
   "scripts": {
     "dev": "next dev",

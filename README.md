@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Frontend of Wordsmith
 
-## Getting Started
+This project contains the Next.js app that acts as the frontend for the Wordsmith web app.
 
-First, run the development server:
+## Setup
+To get a dev environment up-n-running, start by installing all of the dependencies using `npm install`. To run the service, you must also have access to a running instance of the [Wordsmith backend](https://github.com/htimsdroW/func-reversify). There are instructions on how to setup that service in its `README.md`. If you have access to the live testing environment, you can use that instead.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Configuration
+There are two environment variables that are required: REVERSIFY_FUNCTION_HOST and
+REVERSIFY_FUNCTION_KEY. These should both be assigned in a file that has the name `.env.local` that, in turn, must reside in the project's root directory. You can use `.env.example` as a template. If you're using a local instance of the backend, then the REVERSIFY_FUNCTION_KEY value can be left blank. This because local Azure Functions require not access keys.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The local environment file, if it exists, will override the project variables that are available in `next.config.js`. That file is committed, and should not contain any secrets.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Release
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Continuous development was set up using Azure's source control integration for [Static Web Apps](https://learn.microsoft.com/en-us/azure/static-web-apps/deploy-nextjs-hybrid#create-a-static-web-app). Any commits to the main branch are built server-side; and if successful, the code is automatically deployed to the cloud service. **NOTE**: do not give unknown people merge-rights to main. The same guid can be followed if there is a desire to host the service at a new location. Do note, however, that the backend's access key must be manually entered as a Configuration if that is the case. Whereas the backend is coupled with the Azure ecosystem, this app should be deployable to most any hosting service.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Scripts
 
-## Learn More
+### start dev environment
+To start a dev environment, run `npm run dev`. This should not be used in production.
 
-To learn more about Next.js, take a look at the following resources:
+### start prod environment
+To start a production environment, run `npm run start`. This script requires that the build script has ran beforehand.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### build for release
+To compile the project into a release-friendly package, run `npm run build`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### invoke the linter
+To invoke the linter, run `npm run lint`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### invoke the prettier
+There is currently no prettier, help us out by creating a pull-request! =D
