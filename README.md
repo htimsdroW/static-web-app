@@ -7,9 +7,7 @@ To get a dev environment up-n-running, start by installing all of the dependenci
 
 ### Configuration
 There are two environment variables that are required: REVERSIFY_FUNCTION_HOST and
-REVERSIFY_FUNCTION_KEY. These should both be assigned in a file that has the name `.env.local` that, in turn, must reside in the project's root directory. You can use `.env.example` as a template. If you're using a local instance of the backend, then the REVERSIFY_FUNCTION_KEY value can be left blank. This because local Azure Functions require not access keys.
-
-The local environment file, if it exists, will override the project variables that are available in `next.config.js`. That file is committed, and should not contain any secrets.
+REVERSIFY_FUNCTION_KEY. For local development, these variables should be in a file that has the name `.env.local` and that resides in the project's root directory. You can use `.env.example` as a template. If you're using a local instance of the backend, then the REVERSIFY_FUNCTION_KEY value can be any value (but not blank). This because local Azure Functions require no access keys.
 
 ## Release
 
