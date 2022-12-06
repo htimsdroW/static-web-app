@@ -8,6 +8,7 @@ function ReversifyForm({setInput, setOutput}: Props) {
     const body = event.target.inputString.value
     setInput(body)
     setOutput("")
+    event.target.inputString.value = ""
 
     const result = await fetch('/api/reversify', {body, method: 'POST'}).then(res => res.text()).catch(err => err)
     
